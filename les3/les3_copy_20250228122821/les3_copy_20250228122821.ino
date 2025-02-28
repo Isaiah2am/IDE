@@ -26,7 +26,7 @@ CreateJson();
   } else  {
     digitalWrite(D3, LOW);
   }
-  if (ldr_value > 500 && 700){
+  if (ldr_value > 500 &&  ldr_value <= 700){
     digitalWrite(D5, HIGH);
   } else  {
     digitalWrite(D5, LOW);
