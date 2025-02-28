@@ -23,19 +23,18 @@ CreateJson();
 
   if (ldr_value < 500){
     digitalWrite(D3, HIGH);
-    delay(100);
+  } else  {
     digitalWrite(D3, LOW);
-    delay(100);
-    digitalWrite(D6, HIGH);
-    delay(100);
-    digitalWrite(D6, LOW);
-    delay(100);
+  }
+  if (ldr_value > 500 && 700){
     digitalWrite(D5, HIGH);
-    delay(100);
+  } else  {
     digitalWrite(D5, LOW);
-    delay(100);
-
-
+  }
+  if (ldr_value > 700){
+    digitalWrite(D6, HIGH);
+  } else  {
+    digitalWrite(D6, LOW);
   }
 }
 
