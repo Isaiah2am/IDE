@@ -9,9 +9,9 @@ const char* password = "Mediacollege";
 String deviceName;
 
 // POST variables
-const String serverProtocol = "https://";
-const String serverIP = "38708.hosts2.ma-cloud.nl"; // Ma cloud url or localhost IP
-const String serverDirectory = "HTML/hoofdstuk1/duurzaamhuis/post.php";
+const String serverProtocol = "";
+const String serverIP = ""; // Ma cloud url or localhost IP
+const String serverDirectory = "";
 const uint8_t thumbprint[20] = {0xf8, 0x7e, 0x63, 0xa9, 0x4e, 0x2b, 0xf7, 0xfa, 0xd7, 0xd4, 0x60, 0xe1, 0x20, 0x57, 0x83 ,0x5f, 0xf8, 0x34, 0x5b, 0x44};
 String URL = "";
 
@@ -63,7 +63,6 @@ void SendPOST(char message[]) {
   HTTPClient https;
   https.setTimeout(7500);
   
-  Serial.println("URL: " + URL);
   if( https.begin(client, URL) ) {
     static unsigned long packages = 0, success = 0, loss = 0;
     https.addHeader("Content-Type", "application/json");

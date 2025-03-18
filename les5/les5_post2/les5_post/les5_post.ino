@@ -1,6 +1,12 @@
+
 #define MAX_UNSIGNED_LONG 4294967295
 #define DHT11ReadDelay 5000
 
+    #include "DHT.h"
+    #include <ArduinoJson.h>
+
+    #define DHTPIN D7
+    #define DHTTYPE DHT11
     #define LDRPIN A0
 // GLOBAL VARIABLES
 // json
@@ -11,12 +17,15 @@ float Humidity = -1;
 float HeatIndex = -1;
 // light sensor
 int Light = -1;
+    DHT dht(DHTPIN, DHTTYPE);
 
-
-void setup() {
+    
+void setup() 
+{
   Serial.begin(115200);
-  
+      dht.begin();
       pinMode(LDRPIN, INPUT);
+  
   SetupWifi();
   CheckWifi();
 }
@@ -32,20 +41,48 @@ void loop() {
     Serial.println("Reading sensors\n");
     
     ReadSensors();
-    // READ SENSOR VALUES HERE
 
     Serial.println("Creating JSON\n");
 
-    // CREATE JSON OBJECT HERE
     CreateJSON();
+    
     Serial.println("Sending POST\n");
 
-    // SEND POST REQUEST HERE
-    SendPOST(jsonOut);
+    SendPOST();
 
     previousTime = millis();
   }
 
   CheckWifi();
-  delay(50);
-}
+
+
+
+//#include "DHT.h"
+//#include <ArduinoJson.h>
+
+//#define DHTPIN D7
+//#define DHTTYPE DHT11
+//#define LDRPIN A0
+
+//DHT dht(DHTPIN, DHTTYPE);
+
+
+//char jsonOut[128];
+
+//float Temperature, Humidity, HeatIndex;
+//int LDRValue;
+
+
+
+
+//void setup() {
+//  Serial.begin(9600);
+//  dht.begin();
+//  pinMode(LDRPIN, INPUT);
+//}
+//
+//void loop() {
+//  ReadSensors();
+//  delay(6000);
+//}
+

@@ -9,10 +9,6 @@ JsonDocument doc;
 void CreateJSON() {
   static int attempt = 0;
   doc["attempt"] = ++attempt;
-   doc["Temperature"] = Temperature;
-    doc["Humidity"] = Humidity;
-    doc["HeatIndex"] = HeatIndex;
-    doc["LDRValue"] = Light;
   
   serializeJson(doc, jsonOut);
 }
